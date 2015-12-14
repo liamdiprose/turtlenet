@@ -25,6 +25,8 @@ This was added from *within* my IDE. (just checking)
 
 ## Native Turtle commands
 
+Commmand | Description
+---------|--------------
 craft  | craft item from inventory
 equip  | trys to equip a tool
 go     | Move to location
