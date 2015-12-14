@@ -1,3 +1,3 @@
 # Client
 
-The user interface, can be subsituted for a script (langauge indepentant)
+The user interface, can be substituted for a script (language independent)
