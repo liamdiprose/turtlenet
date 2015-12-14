@@ -1,7 +1,7 @@
 # TurtleNET
 A project aimed to add functionity to ComputerCraft turtles with an external http control server.
 
-
+This was added from *within* my IDE. (just checking)
 ## The plan
 
     Client
@@ -19,3 +19,4 @@ A project aimed to add functionity to ComputerCraft turtles with an external htt
     CC Turtle/Computer
        |
      Doing stuff
+
