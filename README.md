@@ -4,21 +4,7 @@ A project aimed to add functionity to ComputerCraft turtles with an external htt
 This was added from *within* my IDE. (just checking)
 ## The plan
 
-    Client
-      |
-      API
-    (python socket)
-      v
-    Control Server
-       ^
-       |
-    Intermittent
-    HTTP POST/GET
-    instructions
-       |
-    CC Turtle/Computer
-       |
-     Doing stuff
+![Plan Graphic](http://i.imgur.com/q52iOza.png)
 
 ## CC API's <http://www.computercraft.info/wiki/Category:APIs>
 
