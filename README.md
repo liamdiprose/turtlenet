@@ -1,10 +1,11 @@
 # TurtleNET
 A project aimed to add functionity to ComputerCraft turtles with an external http control server.
 
-This was added from *within* my IDE. (just checking)
 ## The plan
 
 ![Plan Graphic](http://i.imgur.com/q52iOza.png)
+
+[An explanation of the current branch can  be found here](branch.md)
 
 ## CC API's <http://www.computercraft.info/wiki/Category:APIs>
 
