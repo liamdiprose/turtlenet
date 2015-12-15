@@ -5,7 +5,7 @@ import sys
 from collections import deque
 
 # Globals
-BIND_ADDR = "127.0.0.1"
+BIND_ADDR = "localhost"
 BIND_PORT = 54363
 
 if len(sys.argv) == 2:
@@ -16,9 +16,9 @@ elif len(sys.argv) == 3:
 
 # Logging Objects
 log = logging.getLogger()
-log.setLevel(logging.INFO)
+log.setLevel(logging.DEBUG)
 ch = logging.StreamHandler()
-ch.setLevel(logging.INFO)
+ch.setLevel(logging.DEBUG)
 log.addHandler(ch)
 
 # Initiate Server Socket
@@ -34,6 +34,14 @@ server.listen()
 inputs = [server]
 outputs = []
 message_queue = {}
+headers = "HTTP/1.1 200 OK\n\n"
+
+def closeconn(sock):
+    inputs.remove(sock)
+    if s in outputs:
+       outputs.remove(s)
+    del message_queue[sock]
+    sock.close()
 
 while inputs:
     readable, writable, exceptional = select.select(inputs, outputs, inputs)
@@ -45,7 +53,10 @@ while inputs:
             inputs.append(connection)
             message_queue[connection] = deque()
             # message_queue[connection].append(HEADERS.encode()) TODO: Add heders to server
+            message_queue[connection].append(headers.encode())
+            message_queue[connection].append("Hello Turtle, I'm World.\n".encode())
             log.debug("Created message queue")
+            outputs.append(connection)
 
         else:
             data = s.recv(1024)
@@ -53,11 +64,9 @@ while inputs:
             if data:
                 log.debug(str("Received %s" % data))
 
-            for line in open('index.html').readlines():
-                message_queue[s].append(line.strip().encode())
 
-            if s not in outputs:
-                outputs.append(s)
+                # Process Data
+                # Respond with approiate message
 
     for s in writable:
         try:
@@ -65,10 +74,13 @@ while inputs:
 
         except IndexError:
             log.info("Bye Bye " + s.getpeername()[0] + "!")
-            outputs.remove(s)
-            inputs.remove(s)
-            s.close()
+            closeconn(s)
 
         else:
-            log.log(5,"Sent data to "+ s.getpeername()[0])
+            log.debug("Sent '" + next_msg.decode() + "' to "+ s.getpeername()[0])
             s.send(next_msg)
+
+    for s in exceptional:
+        log.error(s.getpeername[0] + " disconnected with an exception")
+        closeconn(s)
+
