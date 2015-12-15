@@ -10,7 +10,7 @@ A project aimed to add functionity to ComputerCraft turtles with an external htt
 ## CC API's <http://www.computercraft.info/wiki/Category:APIs>
 
 
-## Native Turtle commands
+## Native Turtle program
 
 Commmand | Description
 ---------|--------------
@@ -20,6 +20,29 @@ go     | Move to location
 refuel | Refeul with items in inventory
 turn   | Rotate turtle
 unequip| Unequip tool
+
+## Turtle Commands
+*t is subsitited for turtle*
+
+Function Call       | Description
+--------------------|-------------
+`t.craft(number)`     | Craft using any items in turtles inventory
+`t.direction`         | Move in that direction
+`t.turnDirection`     | Move in that direction
+`t.select(slot)`      | Select item in inventory at that slot
+`t.getItemCount(slot)`| Find how many items in that stack
+`t.getItemSpace(slot)`| Gets how many items left to fill that slot
+`t.getItemDetail`     | Returns ID string, count, damage
+`t.equipSide()`       | Attempts to equip item at current slot
+`t.attackDirection`   | Attack!
+`t.digDirection`      | Dig.
+`t.placeDirection([string])`| Place block in front, optional engrave text on signs
+`t.detectdirection`   | Detects if a block is in front of turtle
+`t.inspect()`         | Returns ID string and metadata of the block in front of the turtle
+`t.drop([number])`    | Drops amount of items in selected slot
+`t.suck([number])`    | Pick Up items off ground
+`t.refeul([number])`  | Refeults the turtle with stuff inside it
+`t.transferTo(slot1, [number]` | Transfer from selected slot to `slot1`
 
 
 ## Server - Turtle Connection
