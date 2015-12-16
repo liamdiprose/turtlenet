@@ -16,40 +16,41 @@ class Turtle(CCMachine):
     def move(self, direction):
 
 
+
     def locate(self):
 
 
-    def equip(self, side, slot):
-
-    def craft(self, number):
-
-    def select(self, slot):
-
-    def getSelectedSlot(self):
-
-    def getItemCount(self, slot):
-
-    def getItemSpace(self, slot):
-
-    def getItemDetail(self, slot):
-
-    def equip(self, side='left'):
-
-    def dig(self, direction):
-
-    def place(self, direction='forward', text=''):
-
-    def detect(self, direction='forward'):
-
-    def inspect(self, direction):
-
-    def drop(self, count, slot=self.currentslot, direction='forward'):
-
-    def suck(self, count=None, direction='forward'):
-
-    def refuel(self, quanitity):
-
-    def transfer(self, slot, number=None):
+    # def equip(self, side, slot):
+    #
+    # def craft(self, number):
+    #
+    # def select(self, slot):
+    #
+    # def getSelectedSlot(self):
+    #
+    # def getItemCount(self, slot):
+    #
+    # def getItemSpace(self, slot):
+    #
+    # def getItemDetail(self, slot):
+    #
+    # def equip(self, side='left'):
+    #
+    # def dig(self, direction):
+    #
+    # def place(self, direction='forward', text=''):
+    #
+    # def detect(self, direction='forward'):
+    #
+    # def inspect(self, direction):
+    #
+    # def drop(self, count, slot=self.currentslot, direction='forward'):
+    #
+    # def suck(self, count=None, direction='forward'):
+    #
+    # def refuel(self, quanitity):
+    #
+    # def transfer(self, slot, number=None):
 
 t = Turtle
 t.move('back')
@@ -59,3 +60,18 @@ class Computer(CCMachine):
     """Class for controlling Computers"""
     def __init__(self):
         # TODO List of basic parameters specific to computers
+
+class Job(object):
+    """The job object holds the information needed to
+       instruct the turtle,
+       and serializles the data correctly"""
+    def __init__(self, jobID, api, command, **kwargs):
+        self.id = jobID
+        self.api = api
+        self.command = command
+        self.args = kwargs # Arguements for the command (amount, slotNum etc)
+
+    def serialize(self):
+        """
+        :return: ComputerCraft serilized string
+        """
